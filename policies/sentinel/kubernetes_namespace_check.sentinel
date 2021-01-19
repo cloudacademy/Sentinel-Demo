@@ -26,12 +26,6 @@ is_namespaced = func(deployment_names) {
    } 
 }
 
-
-
 main = rule { 
-    if length(violations) is > 0 {
-       false
-    } else {
-       true
-    }
+   (length(violations) > 0) else false
 }
