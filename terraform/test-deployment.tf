@@ -1,4 +1,4 @@
-resource "kubernetes_deployment" "webserver" {
+resource "kubernetes_deployment" "webserver-fail" {
   metadata {
     name = "front-end-webserver"
     labels = {
