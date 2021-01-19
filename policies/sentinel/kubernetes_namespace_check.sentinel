@@ -2,29 +2,13 @@
 # creation of Kubernetes deployments without Namespaces
 # if the current plan were to be applied.
 
-import "tfplan/v2" as plan
+import "tfplan-functions" as plan
 
-deployment_names = func() {
-     deployments = []
-     // Grab all deployments
-     for plan.resources as type, resource {
-             if type is "kubernetes_deployment" {
-                     deployments += [resource]
-             }
-     }
-     return deployments
-}
+allDeployments = plan.find_resources("kubernetes_deployment")
 
-is_namespaced = func(deployment_names) {
-   for deployment_names.metadata as namespace, ns {
-      if ns is "" or null {
-         print("Namespace undefined")
-         violations += [ns]
-      } 
-   } 
-}
+not_namespaced = plan.filter_attribute_is_value(allDeployments, "namespace", "", true)
 
-violations = length(is_namespaced)
+violations = length(not_namespaced)
 
 main = rule { 
    violations is 0
