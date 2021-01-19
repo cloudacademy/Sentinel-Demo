@@ -1,6 +1,7 @@
 resource "kubernetes_deployment" "webserver-fail" {
   metadata {
     name = "front-end-webserver"
+    namespace = "front-end"
     labels = {
       webserver = "front-end-nginx"
     }

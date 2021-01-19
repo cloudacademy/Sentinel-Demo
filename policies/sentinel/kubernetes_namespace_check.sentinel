@@ -1,4 +1,4 @@
-# This policy uses the Sentinel tfrun import to restrict the
+# This policy uses the Sentinel tfplan import to restrict the
 # creation of Kubernetes deployments without Namespaces
 # if the current plan were to be applied.
 
