@@ -1,0 +1,31 @@
+# This policy uses the Sentinel tfrun import to restrict the
+# creation of Kubernetes deployments without Namespaces
+# if the current plan were to be applied.
+
+import "tfplan/v2" as plan
+
+deployments = func() {
+     deployments = []
+     // Grab all deployments
+     for plan.resources as type, resource {
+             if type is "kubernetes_deployment" {
+                     deployments += [resource]
+             }
+     }
+     return deployments
+}
+
+violations = []
+
+is_namespaced = func(deployments) {
+   for deployments.metadata as namespace, ns {
+      if ns is "" or null {
+         print("Namespace undefined")
+         violations += [ns]
+      } 
+   } 
+}
+
+main = rule { 
+   violations is 0
+}
