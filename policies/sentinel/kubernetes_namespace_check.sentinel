@@ -15,8 +15,6 @@ deployment_names = func() {
      return deployments
 }
 
-violations = []
-
 is_namespaced = func(deployment_names) {
    for deployment_names.metadata as namespace, ns {
       if ns is "" or null {
@@ -26,6 +24,8 @@ is_namespaced = func(deployment_names) {
    } 
 }
 
+violations = length(is_namespaced)
+
 main = rule { 
-   (length(violations) > 0) else false
+   violations is 0
 }
