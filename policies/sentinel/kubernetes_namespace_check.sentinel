@@ -8,13 +8,13 @@ import "tfplan-functions" as plan
 all_deployments = plan.find_resources("kubernetes_deployment")
 
 namespace = "metadata.0.namespace"
-regex = "prod-"
+prefix = "prod-"
 
 
 improper_namespace = plan.filter_attribute_does_not_have_prefix(
    all_deployments, 
    namespace, 
-   regex, 
+   prefix, 
    true)
 
 violations = length(improper_namespace["messages"])
