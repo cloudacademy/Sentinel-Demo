@@ -3,6 +3,6 @@ policy "kubernetes-namespace" {
   enforcement_level = "advisory"
 }
 
-module "plan" {
-  source = common-functions/tfplan-functions-sentinel
+module "tfplan-functions" {
+  source = "./common-functions/tfplan-functions.sentinel"
 }
