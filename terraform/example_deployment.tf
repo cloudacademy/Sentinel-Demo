@@ -1,7 +1,7 @@
 resource "kubernetes_deployment" "webserver-pass" {
   metadata {
     name = "front-end-webserver"
-    namespace = "front-end"
+    namespace = "prod-front-end"
     labels = {
       webserver = "front-end-nginx"
     }
