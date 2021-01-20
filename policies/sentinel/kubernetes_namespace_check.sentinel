@@ -1,6 +1,8 @@
 # This policy uses the Sentinel tfplan import to restrict the
 # creation of Kubernetes deployments without Namespaces
-# if the current plan were to be applied.
+# if the current plan were to be applied. This policy can be tested locally,
+# as well as within in Terraform Cloud due to the fact that it's linked to 
+# a Terraform Cloud workspace.
 
 import "tfplan-functions" as plan
 
