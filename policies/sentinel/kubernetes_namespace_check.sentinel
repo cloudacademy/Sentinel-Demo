@@ -4,11 +4,20 @@
 
 import "tfplan-functions" as plan
 
-allDeployments = plan.find_resources("kubernetes_deployment")
 
-not_namespaced = plan.filter_attribute_is_value(allDeployments, "namespace", "", true)
+all_deployments = plan.find_resources("kubernetes_deployment")
 
-violations = length(not_namespaced)
+namespace = "metadata.0.namespace"
+regex = "prod-"
+
+
+improper_namespace = plan.filter_attribute_does_not_have_prefix(
+   all_deployments, 
+   namespace, 
+   regex, 
+   true)
+
+violations = length(improper_namespace["messages"])
 
 main = rule { 
    violations is 0

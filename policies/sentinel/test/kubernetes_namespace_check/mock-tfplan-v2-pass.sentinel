@@ -1,0 +1,243 @@
+terraform_version = "0.14.4" 
+
+resource_changes = {
+"kubernetes_deployment.webserver-pass": {
+		"address": "kubernetes_deployment.webserver-pass",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"metadata": [
+					{
+						"annotations":   null,
+						"generate_name": null,
+						"labels": {
+							"webserver": "front-end-nginx",
+						},
+						"name":      "front-end-webserver",
+						"namespace": "prod-test",
+					},
+				],
+				"spec": [
+					{
+						"min_ready_seconds":         0,
+						"paused":                    false,
+						"progress_deadline_seconds": 600,
+						"replicas":                  2,
+						"revision_history_limit":    10,
+						"selector": [
+							{
+								"match_expressions": [],
+								"match_labels": {
+									"test": "front-end-webserver",
+								},
+							},
+						],
+						"template": [
+							{
+								"metadata": [
+									{
+										"annotations":   null,
+										"generate_name": null,
+										"labels": {
+											"test": "front-end-webserver",
+										},
+										"namespace": null,
+									},
+								],
+								"spec": [
+									{
+										"active_deadline_seconds":         null,
+										"affinity":                        [],
+										"automount_service_account_token": null,
+										"container": [
+											{
+												"args":      null,
+												"command":   null,
+												"env":       [],
+												"env_from":  [],
+												"image":     "nginx:1.7.8",
+												"lifecycle": [],
+												"liveness_probe": [
+													{
+														"exec":              [],
+														"failure_threshold": 3,
+														"http_get": [
+															{
+																"host": null,
+																"http_header": [
+																	{
+																		"name":  "X-Custom-Header",
+																		"value": "At_least_I_have_liveness_probes",
+																	},
+																],
+																"path":   "/nginx_status",
+																"port":   "80",
+																"scheme": "HTTP",
+															},
+														],
+														"initial_delay_seconds": 3,
+														"period_seconds":        3,
+														"success_threshold":     1,
+														"tcp_socket":            [],
+														"timeout_seconds":       1,
+													},
+												],
+												"name":            "nginx",
+												"port":            [],
+												"readiness_probe": [],
+												"resources": [
+													{
+														"limits": [
+															{
+																"cpu":    "0.5",
+																"memory": "512Mi",
+															},
+														],
+														"requests": [
+															{
+																"cpu":    "250m",
+																"memory": "50Mi",
+															},
+														],
+													},
+												],
+												"security_context":         [],
+												"startup_probe":            [],
+												"stdin":                    false,
+												"stdin_once":               false,
+												"termination_message_path": "/dev/termination-log",
+												"tty":         false,
+												"working_dir": null,
+											},
+										],
+										"dns_config":                       [],
+										"dns_policy":                       "ClusterFirst",
+										"enable_service_links":             true,
+										"host_aliases":                     [],
+										"host_ipc":                         false,
+										"host_network":                     false,
+										"host_pid":                         false,
+										"init_container":                   [],
+										"node_selector":                    null,
+										"priority_class_name":              null,
+										"readiness_gate":                   [],
+										"restart_policy":                   "Always",
+										"security_context":                 [],
+										"share_process_namespace":          false,
+										"subdomain":                        null,
+										"termination_grace_period_seconds": 30,
+										"toleration":                       [],
+									},
+								],
+							},
+						],
+					},
+				],
+				"timeouts":         null,
+				"wait_for_rollout": true,
+			},
+			"after_unknown": {
+				"id": true,
+				"metadata": [
+					{
+						"generation":       true,
+						"labels":           {},
+						"resource_version": true,
+						"self_link":        true,
+						"uid":              true,
+					},
+				],
+				"spec": [
+					{
+						"selector": [
+							{
+								"match_expressions": [],
+								"match_labels":      {},
+							},
+						],
+						"strategy": true,
+						"template": [
+							{
+								"metadata": [
+									{
+										"generation":       true,
+										"labels":           {},
+										"name":             true,
+										"resource_version": true,
+										"self_link":        true,
+										"uid":              true,
+									},
+								],
+								"spec": [
+									{
+										"affinity": [],
+										"container": [
+											{
+												"env":               [],
+												"env_from":          [],
+												"image_pull_policy": true,
+												"lifecycle":         [],
+												"liveness_probe": [
+													{
+														"exec": [],
+														"http_get": [
+															{
+																"http_header": [
+																	{},
+																],
+															},
+														],
+														"tcp_socket": [],
+													},
+												],
+												"port":            [],
+												"readiness_probe": [],
+												"resources": [
+													{
+														"limits": [
+															{},
+														],
+														"requests": [
+															{},
+														],
+													},
+												],
+												"security_context":           [],
+												"startup_probe":              [],
+												"termination_message_policy": true,
+												"volume_mount":               true,
+											},
+										],
+										"dns_config":           [],
+										"host_aliases":         [],
+										"hostname":             true,
+										"image_pull_secrets":   true,
+										"init_container":       [],
+										"node_name":            true,
+										"readiness_gate":       [],
+										"security_context":     [],
+										"service_account_name": true,
+										"toleration":           [],
+										"volume":               true,
+									},
+								],
+							},
+						],
+					},
+				],
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "webserver-pass",
+		"provider_name":  "registry.terraform.io/hashicorp/kubernetes",
+		"type":           "kubernetes_deployment",
+	},
+}
+
+output_changes = {}
