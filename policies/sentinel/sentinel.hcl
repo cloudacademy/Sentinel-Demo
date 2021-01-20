@@ -4,6 +4,5 @@ policy "kubernetes-namespace" {
 }
 
 module "tfplan-functions" {
-  source = "./common-functions/tfplan-functions/tfplan-functions.sentinel"
+  source = "policies/sentinel/common-functions/tfplan-functions/tfplan-functions.sentinel"
 }
-
