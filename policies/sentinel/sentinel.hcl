@@ -4,5 +4,5 @@ policy "kubernetes-namespace" {
 }
 
 module "plan" {
-  source = modules/tfplan-functions-sentinel
+  source = common-functions/tfplan-functions-sentinel
 }
