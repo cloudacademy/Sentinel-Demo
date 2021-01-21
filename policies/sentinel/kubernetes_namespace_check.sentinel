@@ -9,7 +9,7 @@ import "tfplan-functions" as plan
 
 all_deployments = plan.find_resources("kubernetes_deployment")
 
-# Personal preference for creating variables taht match the function's conditions below
+# Personal preference for creating variables that match the function's conditions below
 # Note: Namespace is accessed through an indice of a list nested under the deployment as such 
 # the notation is without brackets
 namespace = "metadata.0.namespace"
