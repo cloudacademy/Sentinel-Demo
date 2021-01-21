@@ -4,7 +4,12 @@ policy "medium_policy" {
 }
 
 policy "easy_policy" {
-    source = "./easy_policy.sentinel"
+  source = "./easy_policy.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "remote-easy_policy" {
+    source = "git::https://github.com/tsarlewey/Sentinel-Demo.git//policies/sentinel/example_policies/easy_policy.sentinel"
     enforcement_level = "advisory"
 }
 
