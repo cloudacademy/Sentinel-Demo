@@ -9,18 +9,23 @@ import "tfplan-functions" as plan
 
 all_deployments = plan.find_resources("kubernetes_deployment")
 
+# Personal preference for creating variables taht match the function's conditions below
+# Note: Namespace is accessed through an indice of a list nested under the deployment as such 
+# the notation is without brackets
 namespace = "metadata.0.namespace"
 prefix = "prod-"
 
-
+# Filter for violating namespaces and assign them the value of the improper_namespace
 improper_namespace = plan.filter_attribute_does_not_have_prefix(
    all_deployments, 
    namespace, 
    prefix, 
    true)
 
+# Count violating messages
 violations = length(improper_namespace["messages"])
 
+# Ensure the violations are zero
 main = rule { 
    violations is 0
 }
