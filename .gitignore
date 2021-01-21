@@ -1,3 +1,5 @@
 /policies/sentinel/example_policies/.sentinel
 /policies/sentinel/.sentinel
 .vscode
+/terraform/.terraform
+/terraform/provider.tf
