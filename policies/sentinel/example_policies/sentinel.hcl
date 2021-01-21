@@ -8,14 +8,14 @@ policy "easy_policy" {
   enforcement_level = "advisory"
 }
 
-policy "remote-easy_policy" {
-    source = "git::https://github.com/tsarlewey/Sentinel-Demo.git//policies/sentinel/example_policies/easy_policy.sentinel"
-    enforcement_level = "advisory"
-}
-
 policy "multiple_rules" {
   source            = "./multiple_rules.sentinel"
   enforcement_level = "hard-mandatory"
+}
+
+policy "remote-easy_policy" {
+    source = "git::https://github.com/tsarlewey/Sentinel-Demo.git//policies/sentinel/example_policies/easy_policy.sentinel"
+    enforcement_level = "advisory"
 }
 
 module "remote-tfplan-functions-latest" {
