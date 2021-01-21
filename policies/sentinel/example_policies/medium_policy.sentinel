@@ -1,0 +1,32 @@
+# This policy evaluates S3 buckets to be created and requies them to have the 
+# ACL attribute set to private, if not manual approval is required.
+
+# Import a useful library of commonly-used functions created by Roger Berlind
+import "tfplan-functions" as plan
+
+# Filter all resources getting only the resources with the 'aws_s3_bucket'
+# specification.
+all_s3_buckets = plan.find_resources("aws_s3_bucket")
+
+# Establish that the ACL should be set to private
+required_acl = "private"
+
+# Establish the variable to evaluate against calling the 'filter_attribute_is_not_valuie'
+# that requires arguments (resource, attribute, value, print_message). This function
+# returns two maps, resources and messages. The resources map contains violating resources, 
+# and the messages map contains the violation messages. This function is specifically called
+# when the value should be what you specify.
+incorrectly_configured_buckets = plan.filter_attribute_is_not_value(
+    all_s3_buckets, 
+    "acl", 
+    required_acl, 
+    true)
+
+# Count the amount of error messages in the variable
+violations = length(incorrectly_configured_buckets["messages"])
+
+# Ensure the violations are 0, returning true and passing the policy check
+main = rule {
+    violations is 0
+}
+

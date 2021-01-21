@@ -1,0 +1,6 @@
+# Evaluates 10 divided by 5, no rules
+
+basic_arithmetic = (10/5 is 2)
+
+main = basic_arithmetic
+

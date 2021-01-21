@@ -2,10 +2,10 @@
 # creation of Kubernetes deployments without Namespaces
 # if the current plan were to be applied. This policy can be tested locally,
 # as well as within in Terraform Cloud due to the fact that it's linked to 
-# a Terraform Cloud workspace.
+# a Terraform Cloud workspace. Any change pushed to the /terraform folder will trigger
+# a run.
 
 import "tfplan-functions" as plan
-
 
 all_deployments = plan.find_resources("kubernetes_deployment")
 
