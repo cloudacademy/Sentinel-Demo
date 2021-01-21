@@ -16,7 +16,7 @@ resource_changes = {
 							"webserver": "front-end-nginx",
 						},
 						"name":      "front-end-webserver",
-						"namespace": "prod-test",
+						"namespace": "prod-front-end",
 					},
 				],
 				"spec": [
