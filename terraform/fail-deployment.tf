@@ -35,7 +35,7 @@ resource "kubernetes_deployment" "webserver-fail" {
             }
             requests {
               cpu    = "250m"
-              memory = "50Mi"
+              memory = "100Mi"
             }
           }
 
