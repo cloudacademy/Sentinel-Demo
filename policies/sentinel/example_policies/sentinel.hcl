@@ -22,10 +22,10 @@ module "remote-tfplan-functions-latest" {
   source = "git::https://github.com/hashicorp/terraform-guides.git//governance/third-generation/common-functions/tfplan-functions/tfplan-functions.sentinel"
 }
 
-module "local-tfplan-functions" {
-  source = "./common-functions/tfplan-functions/tfplan-functions.sentinel"
-}
-
+ module "local-tfplan-functions" {
+   source = "../common-functions/tfplan-functions/tfplan-functions.sentinel"
+ }
+ 
 mock "time" {
   data = {
     now = {
@@ -35,3 +35,15 @@ mock "time" {
   }
 }
 
+global "work" {
+  value = {
+    weekday = {
+      days = ["Monday", "Tuesday",
+      "Wednesday", "Thursday", "Friday"]
+    }
+  }
+}
+
+param "tired" {
+    value = "Yes"
+}
