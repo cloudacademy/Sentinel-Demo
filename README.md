@@ -1,1 +1,7 @@
 # Sentinel-Demo
+
+| Problem                                 | Tool                          | Recommended Sentinel Policy Actions                                                                                                                                                            |   |   |
+|-----------------------------------------|-------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---|---|
+| Getting Started / Too many alternatives | Reduce number of Alternatives | Use a list of approved services/methods of deployment for the proposed solution with the commons module  of filter_attribute_not_in_list to restrict choices                                   |   |   |
+| Decision Inertia                        | Use Defaults                  | Coupling the above of limiting alternatives, restrict deployment policies to Soft-Mandatory enforcements allowing the team to deliberate on the actual usefulness of proposed services/methods |   |   |
+|                                         |                               |         
