@@ -18,6 +18,16 @@ policy "remote-easy_policy" {
     enforcement_level = "advisory"
 }
 
+policy "approved_resources" {
+  source = "./approved_resources.sentinel"
+  enforcement_level = "hard-mandatory"
+}
+
+policy "q4_cost_burner" {
+  source = "./q4_cost_burner.sentinel"
+  enforcement_level = "advisory"
+}
+
 module "remote-tfplan-functions-latest" {
   source = "git::https://github.com/hashicorp/terraform-guides.git//governance/third-generation/common-functions/tfplan-functions/tfplan-functions.sentinel"
 }
@@ -28,7 +38,10 @@ module "remote-tfplan-functions-latest" {
  
 module "remote-tfconfig-functions" {
   source = "git::https://github.com/hashicorp/terraform-guides.git//governance/third-generation/common-functions/tfconfig-functions/tfconfig-functions.sentinel"
-  
+}
+
+module "local-tfrun-functions" {
+  source = "../common-functions/tfrun-functions/tfrun-functions.sentinel"
 }
 
 mock "time" {
@@ -52,9 +65,3 @@ global "work" {
 param "tired" {
     value = "Yes"
 }
-
-policy "approved_resources" {
-  source = "./approved_resources.sentinel"
-  enforcement_level = "hard-mandatory"
-}
-

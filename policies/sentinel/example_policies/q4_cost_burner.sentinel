@@ -1,0 +1,57 @@
+# This policy relaxes spending costs once the calendar year
+# reaches the fourth quarter (Oct, Nov, Dec). Allowing for greating spending
+# during the end of a 'proposed' fiscal year.
+
+import "decimal"
+import "time"
+import "local-tfrun-functions" as run
+
+# Establish other quarterly rule for cost savings
+saving_estimator = rule {
+    savings_limit = decimal.new(500)
+    savings_percent_increase = decimal.new(5.0)
+    run.limit_cost_and_percentage_increase(savings_limit, savings_percent_increase)
+}
+
+# Establish current timespace
+current_time = time.now
+# Load current month and get its name
+current_month = time.load(current_time).month_name
+# Quarter 4 Months
+q4_months = [
+    "October", 
+    "November", 
+    "December"
+]
+
+# Establish is_q4, set to null
+is_q4 = null
+
+
+# Make sure that the month is the last three months of the calendar year.
+evaluate_q4 = if current_month is not in q4_months {
+    is_q4 = false
+} else {
+    is_q4 = true
+}
+
+# Increase monthly spending to 2000 per month.
+# And increase the percentage increase available to thirty percent.
+# Evalutate is_q4, if not run the saving_estimator rule and print required amount.
+# Note: Do not tell of the new limit, will just cause people to reach it rather than
+# being mindful.
+to_or_not_to_throw_money_away = rule {
+    if is_q4 {
+        print("It is Q4, go play with a new service! Be wise! There still is a limit.")
+        burner_monthly_limit = decimal.new(2000)
+        burner_max_percent_increase = decimal.new(30.0)
+        burner_estimator = run.limit_cost_and_percentage_increase(burner_monthly_limit, burner_max_percent_increase)
+    } else {
+        print("Not the last quarter! Continue cost savings! 500 Dollar Monthly Limit")
+        saving_estimator
+    }
+}
+
+main  = rule {
+    to_or_not_to_throw_money_away
+}
