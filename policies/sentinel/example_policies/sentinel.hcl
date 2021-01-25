@@ -26,6 +26,11 @@ module "remote-tfplan-functions-latest" {
    source = "../common-functions/tfplan-functions/tfplan-functions.sentinel"
  }
  
+module "remote-tfconfig-functions" {
+  source = "git::https://github.com/hashicorp/terraform-guides.git//governance/third-generation/common-functions/tfconfig-functions/tfconfig-functions.sentinel"
+  
+}
+
 mock "time" {
   data = {
     now = {
@@ -47,3 +52,9 @@ global "work" {
 param "tired" {
     value = "Yes"
 }
+
+policy "approved_resources" {
+  source = "./approved_resources.sentinel"
+  enforcement_level = "hard-mandatory"
+}
+

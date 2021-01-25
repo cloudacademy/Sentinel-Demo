@@ -1,0 +1,39 @@
+# This policy establishes a list of approved resources to be used within GCP for a data-science team.
+# If the list of resources is not in the list, the policy will fail. Hard-mandatory enforcement. Runnning 'startup' features (low resource footprint)
+# Important to note with the 'find_resources_by_provider' and 'find_datasources_by_provider' function - 
+# If you are using Terraform 0.12, use the short form of the provider name such as "aws". 
+# If you are using Terraform 0.13, use the fully-qualified provider source such as "registry.terraform.io/hashicorp/aws".
+
+import "remote-tfconfig-functions" as config
+# A list of supported resource, all offered by google.
+gcp_supported_resources = [
+    "google_sql_database",
+    "google_sql_database_instance",
+    "google_sql_source_representation_instance",
+    "google_sql_ssl_cert",
+    "google_sql_user"
+]
+# A list of supported data source, in this case, all of the SQL datasources offered by Google.
+gcp_supported_datasources = [
+    "google_sql_backup_run",
+    "google_sql_ca_certs",
+    "google_sql_database_instance"
+]
+
+# Find all resources, and datasources in the config
+
+all_gcp_resources = config.find_resources_by_provider("gcp")
+all_gcp_datasources = config.find_datasources_by_provider("gcp")
+
+
+# Filter resources that are violating
+violating_resources = config.filter_attribute_not_in_list(all_gcp_resources, 
+    "type", gcp_supported_resources, false)
+violating_datasources = config.filter_attribute_not_in_list(all_gcp_datasources, 
+    "type", gcp_supported_datasources, false)
+
+# Ensure both violations are 0
+
+main = rule {
+    length(violating_resources["messages"] and violating_datasources["messages"]) is 0
+}

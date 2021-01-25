@@ -31,9 +31,9 @@ incorrectly_configured_buckets = plan.filter_attribute_is_not_value(
     required_acl, 
     true)
 
-# Count the amount of error messages in the variable
+# Count the amount of error messages in incorrectly_configured_buckets
 violations = rule { 
-    length(incorrectly_configured_buckets["messages"] is 0)
+    length(incorrectly_configured_buckets["messages"]) is 0
 }
 
 # Ensure the violations are 0, returning true and passing the policy check
