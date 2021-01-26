@@ -6,7 +6,9 @@ import "tfplan-functions" as plan
 import "time"
 
 # Rule to establish the time of day is when I would be on my computer
-work_hours = rule { time.now.hour >= 6 and time.now.hour < 17 }
+work_hours = rule { 
+    time.now.hour >= 6 and time.now.hour < 17 
+    }
 
 # Rule to establish the days of work
 work_days = rule {
