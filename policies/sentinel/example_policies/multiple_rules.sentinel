@@ -38,7 +38,7 @@ violations = rule {
     length(incorrectly_configured_buckets["messages"]) is 0
 }
 
-# Ensure the violations are 0, returning true and passing the policy check
+# Ensure that all rules evaluate to true
 main = rule {
     violations and work_hours and work_days
 }
