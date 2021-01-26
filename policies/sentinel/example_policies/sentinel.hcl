@@ -18,8 +18,8 @@ policy "remote-easy_policy" {
     enforcement_level = "advisory"
 }
 
-policy "approved_resources" {
-  source = "./approved_resources.sentinel"
+policy "default_rule_approved_resources" {
+  source = "./default_rule_approved_resources.sentinel"
   enforcement_level = "hard-mandatory"
 }
 
