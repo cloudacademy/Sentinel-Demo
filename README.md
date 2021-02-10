@@ -83,13 +83,13 @@ These are simply suggestions, at the end of the day, designing a policy to best 
 
 If you'd like to see a pure example of a Sentinel Policy in action, download the Sentinel CLI:
 
-Mac: https://releases.hashicorp.com/sentinel/0.17.4/sentinel_0.17.4_darwin_amd64.zip
-Windows: https://releases.hashicorp.com/sentinel/0.17.4/sentinel_0.17.4_windows_amd64.zip
-Linux: https://releases.hashicorp.com/sentinel/0.17.4/sentinel_0.17.4_linux_amd64.zip
-FreeBSD: https://releases.hashicorp.com/sentinel/0.17.4/sentinel_0.17.4_freebsd_amd64.zip
-NetBSD: https://releases.hashicorp.com/sentinel/0.17.4/sentinel_0.17.4_netbsd_amd64.zip
-OpenBSD: https://releases.hashicorp.com/sentinel/0.17.4/sentinel_0.17.4_openbsd_amd64.zip
-Solaris: https://releases.hashicorp.com/sentinel/0.17.4/sentinel_0.17.4_solaris_amd64.zip
+- Mac: https://releases.hashicorp.com/sentinel/0.17.4/sentinel_0.17.4_darwin_amd64.zip
+- Windows: https://releases.hashicorp.com/sentinel/0.17.4/sentinel_0.17.4_windows_amd64.zip
+- Linux: https://releases.hashicorp.com/sentinel/0.17.4/sentinel_0.17.4_linux_amd64.zip
+- FreeBSD: https://releases.hashicorp.com/sentinel/0.17.4/sentinel_0.17.4_freebsd_amd64.zip
+- NetBSD: https://releases.hashicorp.com/sentinel/0.17.4/sentinel_0.17.4_netbsd_amd64.zip
+- OpenBSD: https://releases.hashicorp.com/sentinel/0.17.4/sentinel_0.17.4_openbsd_amd64.zip
+- Solaris: https://releases.hashicorp.com/sentinel/0.17.4/sentinel_0.17.4_solaris_amd64.zip
 
 Extract it and put it in your path.
 
