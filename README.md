@@ -1,8 +1,6 @@
-# Driving Organizational Choice in the Right Direction with Hashicorp Sentinel
+# Examples and further Policies
 
-This repo accompanies a webinar given for CloudOps Summit on 2/10/21
-
-This talk was given as an introductory glance at Hashicorp's Policy as Code tool, Sentinel.
+Example policies are located in /sentinel/policies/examples
 
 
 ## Problem:
