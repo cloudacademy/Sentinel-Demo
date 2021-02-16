@@ -1,6 +1,6 @@
 # Examples and further Policies
 
-Example policies are located in /sentinel/policies/examples
+Example policies are located in /policies/example_policies
 
 
 ## Problem:
